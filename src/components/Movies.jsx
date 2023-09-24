@@ -4,7 +4,7 @@ const Movies = () => {
   const [movies, setMovies] = useState([]);
 
   const getMovies = async () => {
-    const response = await fetch(`http://www.omdbapi.com/?s=Thor&apikey=f9eaded`);
+    const response = await fetch(`https://www.omdbapi.com/?s=Thor&apikey=f9eaded`);
     const data = await response.json();
     if (data && data.Search) {
       setMovies(data.Search);
