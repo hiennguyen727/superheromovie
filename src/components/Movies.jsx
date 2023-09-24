@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import "../App.css"
+import "../index.css"
 const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -19,10 +20,11 @@ const Movies = () => {
     }
   };
 
-  const predefinedSearches = ['Thor', 'One Piece', 'Naruto', 'Spiderman', 'Ironman', 'Harry Potter','Loki'];
+  const Searches = ['Thor', 'One Piece', 'Naruto', 'Spiderman', 'Ironman', 'Harry Potter','Loki'];
 
   return (
     <div>
+        <button className='login' >LOGIN</button>
         <h1  className='header' >👿 HIEN MOVIES 😈</h1>
       <div className="search-container">
         <input
@@ -33,11 +35,11 @@ const Movies = () => {
           onChange={(e) => setSearchTerm(e.target.value)}
         /><div className='searchbutton1'>
         <button className="search-button" onClick={handleSearch}>
-          Search
+          LOOK
         </button></div>
       </div>
-      <div className="predefined-searches">
-        {predefinedSearches.map((term, index) => (
+      <div className="searches">
+        {Searches.map((term, index) => (
           <button key={index} onClick={() => getMovies(term)}>
             {term}
           </button>
