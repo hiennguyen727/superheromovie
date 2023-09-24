@@ -1,19 +1,48 @@
 import React, { useState } from 'react';
-
+import "../App.css"
 const Movies = () => {
   const [movies, setMovies] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+  
 
-  const getMovies = async () => {
-    const response = await fetch(`https://www.omdbapi.com/?s=Thor&apikey=f9eaded`);
+  const getMovies = async (searchTerm) => {
+    const response = await fetch(`https://www.omdbapi.com/?s=${searchTerm}&apikey=f9eaded`);
     const data = await response.json();
     if (data && data.Search) {
       setMovies(data.Search);
     }
   };
 
+  const handleSearch = () => {
+    if (searchTerm.trim() !== '') {
+      getMovies(searchTerm);
+    }
+  };
+
+  const predefinedSearches = ['Thor', 'One Piece', 'Naruto', 'Spiderman', 'Ironman', 'Harry Potter','Loki'];
+
   return (
     <div>
-      <button  className='moviebutton' onClick={getMovies}>Load Movies</button>
+        <h1  className='header' >👿 HIEN MOVIES 😈</h1>
+      <div className="search-container">
+        <input
+        className='inputsize'
+          type="text"
+          placeholder="SEARCH FOR A MOVIE!!!!!!!!!!!!!!!"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        /><div className='searchbutton1'>
+        <button className="search-button" onClick={handleSearch}>
+          Search
+        </button></div>
+      </div>
+      <div className="predefined-searches">
+        {predefinedSearches.map((term, index) => (
+          <button key={index} onClick={() => getMovies(term)}>
+            {term}
+          </button>
+        ))}
+      </div>
       <div className="movie-container">
         {movies.map((movie, index) => (
           <div key={index} className="movie-item">
