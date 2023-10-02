@@ -19,7 +19,7 @@ const Movies = () => { //core function
   return (
     <div>
         
-        <h1  className='header' > HIEN MOVIES </h1>     
+        <h1  className='header' > HIEN.TV </h1>     
       <div className="search-container">                
         <input
         className='inputsize'             
